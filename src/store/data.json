@@ -1,0 +1,80 @@
+{
+    "locations": [
+        {
+            "id": 1,
+            "name": "testloc.ru_01"
+        },
+        {
+            "id": 2,
+            "name": "testloc.ru_02"
+        },
+        {
+            "id": 3,
+            "name": "testloc.ru_03"
+        }
+    ],
+    "evironments": [
+        {
+            "id": 1,
+            "locationId": 1,
+            "name": "Test_192.168.220.157"
+        },
+        {
+            "id": 2,
+            "locationId": 1,
+            "name": "Test_192.168.220.159"
+        },
+        {
+            "id": 3,
+            "locationId": 2,
+            "name": "Test_192.168.220.151"
+        },
+        {
+            "id": 4,
+            "locationId": 2,
+            "name": "Test_192.168.220.152"
+        },
+        {
+            "id": 5,
+            "locationId": 3,
+            "name": "Test_192.168.220.153"
+        },
+        {
+            "id": 6,
+            "locationId": 4,
+            "name": "Test_192.168.220.154"
+        }
+    ],
+    "servers": [
+        {
+            "id": 1,
+            "locationId": 1,
+            "name": "MPTEST43"
+        },
+        {
+            "id": 2,
+            "locationId": 1,
+            "name": "MPTEST44"
+        },
+        {
+            "id": 3,
+            "locationId": 2,
+            "name": "MPTEST41"
+        },
+        {
+            "id": 4,
+            "locationId": 2,
+            "name": "MPTEST42"
+        },
+        {
+            "id": 5,
+            "locationId": 3,
+            "name": "MPTEST45"
+        },
+        {
+            "id": 6,
+            "locationId": 3,
+            "name": "MPTEST46"
+        }
+    ]
+}

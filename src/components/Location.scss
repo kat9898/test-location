@@ -1,0 +1,83 @@
+.locationContainer {
+    border: 2px rgb(226, 226, 226) solid;
+    margin-top: 15px;
+    padding: 10px 20px 25px 20px;
+    max-width: 1000px;
+
+    label {
+        margin-right: 10px;
+    }
+
+    .locationHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        span {
+            margin-left: 10px;
+        }
+    }
+
+    .testLocationData {
+        display: flex;
+        justify-content: space-between;
+
+        .parameter {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        select {
+            height: 40px;
+            border: 1px rgb(177, 177, 177) solid;
+            border-radius: 2px;
+        }
+
+        p {
+            svg {
+                margin-left: 15px;
+            }
+
+            span {
+                font-weight: bold;
+                margin-left: 5px;
+            }
+        }
+
+        #location {
+            width: 200px;
+            background-image: url('../../public/img/location-dot-solid.svg');   
+            background-repeat: no-repeat;
+            background-position: 5px;
+            padding-left: 30px;
+        }
+
+        #environment {
+            width: 220px;
+            background-image: url('../../public/img/envira.svg');   
+            background-repeat: no-repeat; 
+            background-position: 5px; 
+            padding-left: 30px;
+        }
+    }
+
+    .hintContainer {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+        input {
+            height: 40px;
+            border: 1px rgb(177, 177, 177) solid;
+            border-radius: 2px;
+            width: 100%;
+            background-image: url('../../public/img/question-solid.svg');   
+            background-repeat: no-repeat;
+            background-position: 4px;
+            padding-left: 30px;
+        }
+    }
+
+    
+
+}
