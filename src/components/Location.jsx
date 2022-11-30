@@ -1,37 +1,51 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faVial, faLocationDot, faServer, faQuestion } from '@fortawesome/free-solid-svg-icons'
 
 import './Location.scss';
 
-function Location({testLocationData, data}) {
-    const servers = data.servers.map(server => server.name + ", ");
+function Location({testLocationData, asyncOp, deleteLocation, setTestLocationsList, testLocationsList}) {
+    const [selectedLocation, setSelectedLocation] = useState(asyncOp.locations[0] && asyncOp.locations[0].id);
+
+    const filteredEnv = asyncOp.environments.filter(env => env.locationId === selectedLocation);
+    const filteredServers = asyncOp.servers.filter(server => server.locationId === selectedLocation);
+
+    const servers = filteredServers.map(server => server.name).join(', ');
 
   return (
     <div className='locationContainer'>
         <div className='locationHeader'>
             <h2>
                 <FontAwesomeIcon size={"xl"} icon={faVial} />
-                <span>{testLocationData.name}</span>
+                <span>{`Тестовая локация ${testLocationData.id}`}</span>
             </h2>
-            <FontAwesomeIcon icon={faTrashCan} color={"red"} />
+            <FontAwesomeIcon className='trashButton' onClick={() => deleteLocation(testLocationData.id)} icon={faTrashCan} color={"red"} />
         </div>
             <div className='testLocationData'>
                 <div className='parameter'>
                     <label for="location">Локация</label>
-                    <select id="location">
+                    <select onChange={(e) => {
+                        const locationID = asyncOp.locations.find(location => location.name === e.target.value).id;
+                        setSelectedLocation(locationID);
+
+                        setTestLocationsList(testLocationsList.map(loc => (loc.id === testLocationData.id ? Object.assign({}, loc, {locationID}) : loc)));
+                    }} id="location">
                         <FontAwesomeIcon icon={faLocationDot} />
-                        {data.locations.map(location => 
-                            <option>{location.name}</option>
+                        {asyncOp.locations.map((location, index) => 
+                            <option key={index}>{location.name}</option>
                         )}
                     </select>
                 </div>
 
                 <div className='parameter'>
                     <label for="environment">Среда</label>
-                    <select id="environment">
-                        {data.evironments.map(evironment => 
-                            <option>{evironment.name}</option>
+                    <select id="environment" onChange={(e) => {
+                        const envID = asyncOp.environments.find(env => env.name === e.target.value).id;
+
+                        setTestLocationsList(testLocationsList.map(loc => (loc.id === testLocationData.id ? Object.assign({}, loc, {envID}) : loc)));
+                    }}>
+                        {filteredEnv.map((environment, index) => 
+                            <option key={index}>{environment.name}</option>
                         )}
                     </select>
                 </div>
@@ -44,7 +58,10 @@ function Location({testLocationData, data}) {
             </div>
             <div className='hintContainer'>
                 <label for="hint">Подсказка</label>
-                <input id="hint" type="text" placeholder='Комментарий по локации' />
+                <input id="hint" onChange={(e) => {
+                    const hint = e.target.value;
+                    setTestLocationsList(testLocationsList.map(loc => (loc.id === testLocationData.id ? Object.assign({}, loc, {hint}) : loc)));
+                }} type="text" placeholder='Комментарий по локации' />
             </div>
     </div>
   )

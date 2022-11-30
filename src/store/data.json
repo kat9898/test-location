@@ -13,7 +13,7 @@
             "name": "testloc.ru_03"
         }
     ],
-    "evironments": [
+    "environments": [
         {
             "id": 1,
             "locationId": 1,
@@ -41,7 +41,7 @@
         },
         {
             "id": 6,
-            "locationId": 4,
+            "locationId": 3,
             "name": "Test_192.168.220.154"
         }
     ],

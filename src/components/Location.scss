@@ -16,11 +16,16 @@
         span {
             margin-left: 10px;
         }
+
+        .trashButton {
+            cursor: pointer;
+        }
     }
 
     .testLocationData {
         display: flex;
         justify-content: space-between;
+        // flex-wrap: wrap;
 
         .parameter {
             display: flex;
@@ -80,4 +85,15 @@
 
     
 
+}
+
+
+@media (max-width: 900px) {
+    .testLocationData {
+        flex-wrap: wrap;
+
+        .parameter {
+            margin-top: 20px;
+        }
+    }
 }
