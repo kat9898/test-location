@@ -14,7 +14,6 @@ function Location({testLocationData, asyncOp, deleteLocation, setTestLocationsLi
     const servers = filteredServers.map(server => server.name).join(', ');
 
     const locEl = useRef(null);
-    console.log(testLocationData.id, active);
 
     useEffect(() => {
         const onClick = e => {
