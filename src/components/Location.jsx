@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faVial, faLocationDot, faServer, faQuestion } from '@fortawesome/free-solid-svg-icons'
 
@@ -6,14 +6,30 @@ import './Location.scss';
 
 function Location({testLocationData, asyncOp, deleteLocation, setTestLocationsList, testLocationsList}) {
     const [selectedLocation, setSelectedLocation] = useState(asyncOp.locations[0] && asyncOp.locations[0].id);
+    const [active, setActive] = useState(false);
 
     const filteredEnv = asyncOp.environments.filter(env => env.locationId === selectedLocation);
     const filteredServers = asyncOp.servers.filter(server => server.locationId === selectedLocation);
 
     const servers = filteredServers.map(server => server.name).join(', ');
 
+    const locEl = useRef(null);
+    console.log(testLocationData.id, active);
+
+    useEffect(() => {
+        const onClick = e => {
+            if (locEl.current.contains(e.target)) {
+                setActive(true);
+            } else {
+                setActive(false);
+            }
+        }
+        document.addEventListener('click', onClick);
+        return () => document.removeEventListener('click', onClick);
+      }, []);
+
   return (
-    <div className='locationContainer'>
+    <div ref={locEl} className={`locationContainer ${active ? 'active' : ""}`}>
         <div className='locationHeader'>
             <h2>
                 <FontAwesomeIcon size={"xl"} icon={faVial} />

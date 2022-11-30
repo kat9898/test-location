@@ -25,7 +25,6 @@
     .testLocationData {
         display: flex;
         justify-content: space-between;
-        // flex-wrap: wrap;
 
         .parameter {
             display: flex;
@@ -85,6 +84,10 @@
 
     
 
+}
+
+.active {
+    border: 2px rgb(119, 194, 255) solid;
 }
 
 
